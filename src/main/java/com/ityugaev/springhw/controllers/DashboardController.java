@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -29,8 +30,13 @@ public class DashboardController {
 
     @GetMapping("/dashboard")
     public String main(Model model) {
-        List<Address> addresses = (List<Address>) addressRepository.findAll();
-        model.addAttribute("addresses", addresses);
+        boolean isExistZone = (zoneRepository.count() > 0);
+        model.addAttribute("isExistZone", isExistZone);
+        model.addAttribute("addressesCount", addressRepository.count());
+        model.addAttribute("childrenCount", childRepository.count());
+        model.addAttribute("parentsCount", parentRepository.count());
+        model.addAttribute("schoolsCount", schoolRepository.count());
+        model.addAttribute("zonesCount", zoneRepository.count());
         return "dashboard";
     }
 
@@ -68,5 +74,4 @@ public class DashboardController {
         model.addAttribute("zones", zones);
         return "zones";
     }
-
 }

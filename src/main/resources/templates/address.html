@@ -9,13 +9,24 @@
     <link th:href="@{/styles/main.css}" rel="stylesheet"/>
 </head>
 <body class="vsc-initialized">
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-    <h5 class="my-0 me-md-auto font-weight-normal">ITyugaev</h5>
-    <nav class="my-2 my-md-0 mr-md-3">
-        <!--        <a class="p-2 text-dark" href="#"></a>-->
-    </nav>
-    <a class="btn btn-outline-primary" th:href="@{logout}">Sign out</a>
-</div>
+<header class="p-3 mb-3 border-bottom">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                <h5 class="my-0 me-md-auto font-weight-normal">HW-2 (Spring)</h5>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 link-secondary">Overview</a></li>
+                <li><a href="/dashboard" class="nav-link px-2 link-dark">Dashboard</a></li>
+            </ul>
+
+            <div class="col-md-3 text-end">
+                <a type="button" class="btn btn-primary" th:href="@{logout}">Log-out</a>
+            </div>
+        </div>
+    </div>
+</header>
 <div class="container col-xl-10 col-xxl-8 ">
     <div class="fs-4 mb-3 text-decoration-none">
         <a class="text-reset text-decoration-none" href="/dashboard">

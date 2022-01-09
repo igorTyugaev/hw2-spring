@@ -9,30 +9,73 @@
     <link th:href="@{/styles/main.css}" rel="stylesheet"/>
 </head>
 <body class="vsc-initialized">
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-    <h5 class="my-0 me-md-auto font-weight-normal">ITyugaev</h5>
-    <nav class="my-2 my-md-0 mr-md-3">
-        <!--        <a class="p-2 text-dark" href="/dashboard">Dashboard</a>-->
-    </nav>
-    <a class="btn btn-outline-primary" th:href="@{logout}">Sign out</a>
-</div>
+<header class="p-3 mb-3 border-bottom">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                <h5 class="my-0 me-md-auto font-weight-normal">HW-2 (Spring)</h5>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 link-secondary">Overview</a></li>
+                <li><a href="/dashboard" class="nav-link px-2 link-dark">Dashboard</a></li>
+            </ul>
+
+            <div class="col-md-3 text-end">
+                <a type="button" class="btn btn-primary" th:href="@{logout}">Log-out</a>
+            </div>
+        </div>
+    </div>
+</header>
 <div class="container col-xl-10 col-xxl-8 ">
-    <h3 class="mb-3">Доступные таблицы</h3>
-    <div class="list-group">
-        <a href="/address" class="list-group-item list-group-item-action">
-            Таблица адресов
-        </a>
-        <a href="/children" class="list-group-item list-group-item-action">
-            Таблица детей
-        </a>
-        <a href="/parents" class="list-group-item list-group-item-action">
-            Таблица родителей
-        </a>
-        <a href="/schools" class="list-group-item list-group-item-action">
-            Таблица школ
-        </a>
-        <a href="/zones" class="list-group-item list-group-item-action">
-            Таблица районов
+    <div th:if="${isExistZone}" class="mb-3 row">
+        <div class="col-md-8">
+            <h3 class="mb-3">Основное меню команд</h3>
+            <div class="list-group">
+                <a href="/add_parent" class="list-group-item list-group-item-action">
+                    Создать родителя
+                </a>
+                <a href="/add_child" class="list-group-item list-group-item-action">
+                    Создать ребенка
+                </a>
+                <a href="/change_address" class="list-group-item list-group-item-action">
+                    Изменить адресс родителя
+                </a>
+                <a href="/change_school" class="list-group-item list-group-item-action">
+                    Изменить школу ребенка
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="mb-3">Просмотр таблиц</h3>
+            <div class="list-group">
+                <a href="/address" class="list-group-item list-group-item-action">
+                    Таблица адресов (<span th:text="${addressesCount}"/> записей)
+                </a>
+                <a href="/children" class="list-group-item list-group-item-action">
+                    Таблица детей (<span th:text="${childrenCount}"/> записей)
+                </a>
+                <a href="/parents" class="list-group-item list-group-item-action">
+                    Таблица родителей (<span th:text="${parentsCount}"/> записей)
+                </a>
+                <a href="/schools" class="list-group-item list-group-item-action">
+                    Таблица школ (<span th:text="${schoolsCount}"/> записей)
+                </a>
+                <a href="/zones" class="list-group-item list-group-item-action">
+                    Таблица районов (<span th:text="${zonesCount}"/> записей)
+                </a>
+            </div>
+        </div>
+    </div>
+    <div th:unless="${isExistZone}" class="mb-3">
+        <h3 class="mb-3">Требуется добавить данные</h3>
+        <p>
+            <span>Список районов пуст!</span><br>
+            Для дальнейшей работы требуется добавить районы
+        </p>
+        <a class="btn btn-outline-primary" th:href="@{/make-data}">
+            Добавить тестовые данные
         </a>
     </div>
 </div>

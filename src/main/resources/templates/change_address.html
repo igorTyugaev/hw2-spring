@@ -35,28 +35,25 @@
                 <path fill-rule="evenodd"
                       d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"></path>
             </svg>
-            <span class="text-decoration-none">Родители</span>
+            <span class="text-decoration-none">Изменить адресс родителя</span>
         </a>
     </div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">full_name</th>
-            <th scope="col">address_id</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:if="${parents.isEmpty()}">
-            <td colspan="3">Список пуст</td>
-        </tr>
-        <tr th:each="parent : ${parents}">
-            <td><span th:text="${parent.getId()}"/></td>
-            <td><span th:text="${parent.getFullName()}"/></td>
-            <td><span th:text="${parent.getAddress().getId()}"/></td>
-        </tr>
-        </tbody>
-    </table>
+
+    <form class="p-4 p-md-5 border rounded-3 bg-light" th:action="@{/changeAddress}" method="post">
+        <div class="mb-3">
+            <label>
+                <p class="mb-1">ФИО родителя</p>
+                <input type="text" name="fullName" class="form-control" placeholder="Иван Васильевич">
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">
+            Изменить
+        </button>
+        <hr class="my-4">
+        <small th:if="${param.error}">
+            Неверно введены данные
+        </small>
+    </form>
 </div>
 </body>
 </html>
