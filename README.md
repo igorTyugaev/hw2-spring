@@ -1,5 +1,5 @@
-#HW-2 for Java (Spring)
-##Задание:
+# HW-2 for Java (Spring)
+## Задание:
 1. Необходимо самостоятельно ознакоится с модулем Spring Security. Например, https://habr.com/ru/post/482552/. Можно воспользоваться официальной документацией - https://spring.io/projects/spring-security.
 
 2. Необходимо с помощью Spring Security настроить авторизацию пользователей.
